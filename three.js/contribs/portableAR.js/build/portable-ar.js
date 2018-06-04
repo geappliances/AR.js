@@ -52369,19 +52369,14 @@ var PortableARjs = function(canvasEl, options){
 	////////////////////////////////////////////////////////////////////////////////
 	var arjsAnchor = new ARjs.Anchor(arjsSession, arjsProfile.defaultMarkerParameters)
 
-	this.cameraProjectionMatrix = []
-	this.cameraTransformMatrix = []
-
-	////////////////////////////////////////////////////////////////////////////////
-	//			Exposing Variables
-	////////////////////////////////////////////////////////////////////////////////
-	var portableARjs = this;
-
-	//Exposing lastMarkerFoundTimeMs (see https://github.com/mike-starr/AR.js)
 	this.lastMarkerFoundTimeMs = 0;
+	var portableARjs = this;
 	arjsAnchor.controls.addEventListener('markerFound', function(event) {
 		portableARjs.lastMarkerFoundTimeMs = Date.now();
 	});
+
+	this.cameraProjectionMatrix = []
+	this.cameraTransformMatrix = []
 
 	//////////////////////////////////////////////////////////////////////////////
 	//		update function
