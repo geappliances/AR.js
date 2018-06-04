@@ -52036,7 +52036,7 @@ ARjs.MarkersAreaUtils = THREEx.ArMultiMarkerUtils = {}
 
 /**
  * Navigate to the multi-marker learner page
- * 
+ *
  * @param {String} learnerBaseURL  - the base url for the learner
  * @param {String} trackingBackend - the tracking backend to use
  */
@@ -52055,7 +52055,7 @@ ARjs.MarkersAreaUtils.navigateToLearnerPage = function(learnerBaseURL, trackingB
 
 /**
  * Create and store a default multi-marker file
- * 
+ *
  * @param {String} trackingBackend - the tracking backend to use
  */
 ARjs.MarkersAreaUtils.storeDefaultMultiMarkerFile = function(trackingBackend){
@@ -52074,7 +52074,7 @@ ARjs.MarkersAreaUtils.storeDefaultMultiMarkerFile = function(trackingBackend){
 ARjs.MarkersAreaUtils.createDefaultMultiMarkerFile = function(trackingBackend){
 	console.assert(trackingBackend)
 	if( trackingBackend === undefined )	debugger
-	
+
 	// create absoluteBaseURL
 	var link = document.createElement('a')
 	link.href = ARjs.Context.baseURL
@@ -52088,7 +52088,7 @@ ARjs.MarkersAreaUtils.createDefaultMultiMarkerFile = function(trackingBackend){
 		},
 		trackingBackend : trackingBackend,
 		subMarkersControls : [
-			// empty for now... being filled 
+			// empty for now... being filled
 		]
 	}
 	// add a subMarkersControls
@@ -52098,12 +52098,12 @@ ARjs.MarkersAreaUtils.createDefaultMultiMarkerFile = function(trackingBackend){
 	}
 	if( trackingBackend === 'artoolkit' ){
 		file.subMarkersControls[0].parameters.type = 'pattern'
-		file.subMarkersControls[0].parameters.patternUrl = absoluteBaseURL + 'examples/marker-training/examples/pattern-files/pattern-hiro.patt'
+		file.subMarkersControls[0].parameters.patternUrl = absoluteBaseURL + 'examples/marker-training/examples/pattern-files/pattern-ge.patt'
 	}else if( trackingBackend === 'aruco' ){
 		file.subMarkersControls[0].parameters.type = 'barcode'
 		file.subMarkersControls[0].parameters.barcodeValue = 1001
 	}else console.assert(false)
-	
+
 	// json.strinfy the value and store it in localStorage
 	return file
 }
@@ -52114,7 +52114,7 @@ ARjs.MarkersAreaUtils.createDefaultMultiMarkerFile = function(trackingBackend){
 
 /**
  * Create a default controls parameters for the multi-marker learner
- * 
+ *
  * @param {String} trackingBackend - the tracking backend to use
  * @return {Object} - json object containing the controls parameters
  */
@@ -52152,7 +52152,7 @@ ARjs.MarkersAreaUtils.createDefaultMarkersControlsParameters = function(tracking
 				type : 'pattern',
 				patternUrl : absoluteBaseURL + 'examples/marker-training/examples/pattern-files/pattern-letterF.patt',
 			},
-		]		
+		]
 	}else if( trackingBackend === 'aruco' ){
 		var markersControlsParameters = [
 			{
@@ -52202,7 +52202,7 @@ ARjs.MarkersAreaUtils.storeMarkersAreaFileFromResolution = function (trackingBac
 //////////////////////////////////////////////////////////////////////////////
 //		Code Separator
 //////////////////////////////////////////////////////////////////////////////
-	
+
 ARjs.MarkersAreaUtils.buildMarkersAreaFileFromResolution = function(trackingBackend, resolutionW, resolutionH){
 	// create the base file
 	var file = {
@@ -52215,7 +52215,7 @@ ARjs.MarkersAreaUtils.buildMarkersAreaFileFromResolution = function(trackingBack
 			// empty for now...
 		]
 	}
-	
+
 	var whiteMargin = 0.1
 	if( resolutionW > resolutionH ){
 		var markerImageSize = 0.4 * resolutionH
@@ -52228,7 +52228,7 @@ ARjs.MarkersAreaUtils.buildMarkersAreaFileFromResolution = function(trackingBack
 
 	// console.warn('using new markerImageSize computation')
 	var actualMarkerSize = markerImageSize * (1 - 2*whiteMargin)
-	
+
 	var deltaX = (resolutionW - markerImageSize)/2 / actualMarkerSize
 	var deltaZ = (resolutionH - markerImageSize)/2 / actualMarkerSize
 
@@ -52237,18 +52237,18 @@ ARjs.MarkersAreaUtils.buildMarkersAreaFileFromResolution = function(trackingBack
 
 	var subMarkerControls = buildSubMarkerControls('topleft', -deltaX, -deltaZ)
 	file.subMarkersControls.push(subMarkerControls)
-	
+
 	var subMarkerControls = buildSubMarkerControls('topright', +deltaX, -deltaZ)
 	file.subMarkersControls.push(subMarkerControls)
 
 	var subMarkerControls = buildSubMarkerControls('bottomleft', -deltaX, +deltaZ)
 	file.subMarkersControls.push(subMarkerControls)
-	
+
 	var subMarkerControls = buildSubMarkerControls('bottomright', +deltaX, +deltaZ)
 	file.subMarkersControls.push(subMarkerControls)
 
 	return file
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 	//		Code Separator
 	//////////////////////////////////////////////////////////////////////////////
@@ -52275,7 +52275,7 @@ ARjs.MarkersAreaUtils.buildMarkersAreaFileFromResolution = function(trackingBack
 		var link = document.createElement('a')
 		link.href = ARjs.Context.baseURL
 		var absoluteBaseURL = link.href
-			
+
 		var layout2PatternUrl = {
 			'center' : convertRelativeUrlToAbsolute(absoluteBaseURL + 'examples/marker-training/examples/pattern-files/pattern-hiro.patt'),
 			'topleft' : convertRelativeUrlToAbsolute(absoluteBaseURL + 'examples/marker-training/examples/pattern-files/pattern-letterA.patt'),
@@ -52313,11 +52313,11 @@ var PortableARjs = function(canvasEl, options){
 	options.debugUI = options.debugUI !== undefined ? options.debugUI : false
 	options.renderThreejs = options.renderThreejs !== undefined ? options.renderThreejs : false
 	this.options = options
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 	//		create arjsProfile
 	//////////////////////////////////////////////////////////////////////////////
-	
+
 	var trackingMethod = 'area-artoolkit'
 	var arjsProfile = new ARjs.Profile()
 		.sourceWebcam()
@@ -52360,9 +52360,9 @@ var PortableARjs = function(canvasEl, options){
 		renderer: threejsRenderer,
 		camera: threejsCamera,
 		sourceParameters: arjsProfile.sourceParameters,
-		contextParameters: arjsProfile.contextParameters		
+		contextParameters: arjsProfile.contextParameters
 	})
-	
+
 
 	////////////////////////////////////////////////////////////////////////////////
 	//          Create a ARjs.Anchor
@@ -52371,6 +52371,17 @@ var PortableARjs = function(canvasEl, options){
 
 	this.cameraProjectionMatrix = []
 	this.cameraTransformMatrix = []
+
+	////////////////////////////////////////////////////////////////////////////////
+	//			Exposing Variables
+	////////////////////////////////////////////////////////////////////////////////
+	var portableARjs = this;
+
+	//Exposing lastMarkerFoundTimeMs (see https://github.com/mike-starr/AR.js)
+	this.lastMarkerFoundTimeMs = 0;
+	arjsAnchor.controls.addEventListener('markerFound', function(event) {
+		portableARjs.lastMarkerFoundTimeMs = Date.now();
+	});
 
 	//////////////////////////////////////////////////////////////////////////////
 	//		update function
@@ -52384,13 +52395,13 @@ var PortableARjs = function(canvasEl, options){
 
 		// resize babylon canvas
 		arjsSession.arSource.copyElementSizeTo(canvasEl)
-	
+
 		// copy camera projectionMatrix and transformMatrix
 		this.cameraProjectionMatrix = threejsCamera.projectionMatrix.toArray()
 		this.cameraTransformMatrix = threejsCamera.matrix.toArray()
 	}
 
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 	//		add options
 	//////////////////////////////////////////////////////////////////////////////
@@ -52427,7 +52438,7 @@ PortableARjs.prototype._initOptionsDebugUI = function(arjsSession, arjsAnchor){
 	document.querySelector('#arjsDebugUIContainer').appendChild(sessionDebugUI.domElement)
 
 	var anchorDebugUI = new ARjs.AnchorDebugUI(arjsAnchor)
-	document.querySelector('#arjsDebugUIContainer').appendChild(anchorDebugUI.domElement)		
+	document.querySelector('#arjsDebugUIContainer').appendChild(anchorDebugUI.domElement)
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -52444,37 +52455,37 @@ PortableARjs.prototype._initOptionRenderThreejs = function(renderer, scene, came
 	//////////////////////////////////////////////////////////////////////////////////
 	//		add an object in the scene
 	//////////////////////////////////////////////////////////////////////////////////
-	
-	// add a torus knot	
+
+	// add a torus knot
 	var geometry	= new THREE.CubeGeometry(1,1,1)
 	var material	= new THREE.MeshNormalMaterial({
 		transparent : true,
 		opacity: 0.5,
 		side: THREE.DoubleSide
-	}) 
+	})
 	var mesh	= new THREE.Mesh( geometry, material )
 	mesh.position.y	= geometry.parameters.height/2
 	arWorldRoot.add( mesh )
-	
+
 	var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16)
-	var material	= new THREE.MeshNormalMaterial() 
+	var material	= new THREE.MeshNormalMaterial()
 	var mesh	= new THREE.Mesh( geometry, material )
 	mesh.position.y	= 0.5
 	arWorldRoot.add( mesh )
-	
+
 	onRenderFcts.push(function(delta){
 		mesh.rotation.x += Math.PI*delta
 	})
-	
+
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	if( true ){
 		document.body.appendChild( renderer.domElement )
 		onRenderFcts.push(function(){
 			renderer.render( scene, camera )
-		})		
+		})
 	}
 
 	// run the rendering loop
@@ -52490,5 +52501,5 @@ PortableARjs.prototype._initOptionRenderThreejs = function(renderer, scene, came
 		onRenderFcts.forEach(function(onRenderFct){
 			onRenderFct(deltaMsec/1000, nowMsec/1000)
 		})
-	})	
+	})
 }
