@@ -60,6 +60,7 @@ var PortableARjs = function(canvasEl, options){
 	////////////////////////////////////////////////////////////////////////////////
 	var arjsAnchor = new ARjs.Anchor(arjsSession, arjsProfile.defaultMarkerParameters)
 
+	//Exposes lastMarkerFoundTimeMs (See https://github.com/mike-starr/AR.js)
 	this.lastMarkerFoundTimeMs = 0;
 	var portableARjs = this;
 	arjsAnchor.controls.addEventListener('markerFound', function(event) {

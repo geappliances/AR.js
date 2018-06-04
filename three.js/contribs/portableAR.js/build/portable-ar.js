@@ -52100,7 +52100,7 @@ ARjs.MarkersAreaUtils.createDefaultMultiMarkerFile = function(trackingBackend){
 	}
 	if( trackingBackend === 'artoolkit' ){
 		file.subMarkersControls[0].parameters.type = 'pattern'
-		file.subMarkersControls[0].parameters.patternUrl = 'https://cdn.rawgit.com/geappliances/AR.js/66f45b0a/three.js/examples/marker-training/examples/pattern-files/pattern-ge.patt'
+		file.subMarkersControls[0].parameters.patternUrl = 'https://raw.githubusercontent.com/geappliances/AR.js/master/three.js/examples/marker-training/examples/pattern-files/pattern-ge.patt'
 	}else if( trackingBackend === 'aruco' ){
 		file.subMarkersControls[0].parameters.type = 'barcode'
 		file.subMarkersControls[0].parameters.barcodeValue = 1001
@@ -52371,6 +52371,7 @@ var PortableARjs = function(canvasEl, options){
 	////////////////////////////////////////////////////////////////////////////////
 	var arjsAnchor = new ARjs.Anchor(arjsSession, arjsProfile.defaultMarkerParameters)
 
+	//Exposes lastMarkerFoundTimeMs (See https://github.com/mike-starr/AR.js)
 	this.lastMarkerFoundTimeMs = 0;
 	var portableARjs = this;
 	arjsAnchor.controls.addEventListener('markerFound', function(event) {
