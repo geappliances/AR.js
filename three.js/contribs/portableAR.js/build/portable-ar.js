@@ -52370,6 +52370,9 @@ var PortableARjs = function(canvasEl, options){
 	////////////////////////////////////////////////////////////////////////////////
 	var arjsAnchor = new ARjs.Anchor(arjsSession, arjsProfile.defaultMarkerParameters)
 
+	//Exposes the AR.js Anchor
+	this.anchor = arjsAnchor;
+
 	//Exposes lastMarkerFoundTimeMs (See https://github.com/mike-starr/AR.js)
 	this.lastMarkerFoundTimeMs = 0;
 	var portableARjs = this;
@@ -52384,7 +52387,7 @@ var PortableARjs = function(canvasEl, options){
 	//			Create a ARjs.HitTesting
 	////////////////////////////////////////////////////////////////////////////////
 
-	var arjsHitTest = new ARjs.HitTesting(arjsSession, arjsProfile.defaultMarkerParameters)
+	var arjsHitTest = new ARjs.HitTesting(arjsSession)
 
 	//Exposes AR.js HitTesting
 	this.hitTesting = arjsHitTest;
