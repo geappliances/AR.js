@@ -88,6 +88,9 @@ var PortableARjs = function(canvasEl, options){
 		// update the arjsAnchor
 		arjsAnchor.update()
 
+		// update the arjsHitTest
+		arjsHitTest.update()
+
 		// resize babylon canvas
 		arjsSession.arSource.copyElementSizeTo(canvasEl)
 
