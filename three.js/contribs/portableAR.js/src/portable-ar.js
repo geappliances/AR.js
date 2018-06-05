@@ -54,6 +54,8 @@ var PortableARjs = function(canvasEl, options){
 		contextParameters: arjsProfile.contextParameters
 	})
 
+	//Exposing the ARjs Session
+	this.session = arjsSession;
 
 	////////////////////////////////////////////////////////////////////////////////
 	//          Create a ARjs.Anchor
