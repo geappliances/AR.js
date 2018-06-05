@@ -52400,7 +52400,7 @@ var PortableARjs = function(canvasEl, options){
 		arjsAnchor.update()
 
 		// update the arjsHitTest
-		arjsHitTest.update()
+		arjsHitTest.update(arjsSession.parameters.camera, arjsAnchor.object3d, arjsAnchor.parameters.changeMatrixMode)
 
 		// resize babylon canvas
 		arjsSession.arSource.copyElementSizeTo(canvasEl)
